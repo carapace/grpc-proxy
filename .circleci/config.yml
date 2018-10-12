@@ -1,0 +1,19 @@
+version: 2
+
+jobs:
+  build:
+    docker:
+    - image: carapaceio/go:1.11
+
+    steps:
+    - checkout
+
+    - run:
+        name: run tests
+        command: |
+          go get -t ./...
+
+    - run:
+        name: run tests
+        command: |
+          go test ./... -v -race
